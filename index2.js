@@ -6,8 +6,8 @@ nextISSTimesForMyLocation()
     printPassTimes(passTimes);
   })
   .catch((error) => {
-    console.log("It didn't work: ", error.message)
-  })
+    console.log("It didn't work: ", error.message);
+  });
 
 // const { fetchMyIP } = require('./iss_promised');
 // const { fetchCoordsByIP } = require('./iss_promised');
