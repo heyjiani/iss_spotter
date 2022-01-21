@@ -2,6 +2,7 @@
 // const { fetchCoordsByIP } = require('./iss');
 // const { fetchISSFlyOverTimes } = require('./iss');
 const { nextISSTimesForMyLocation } = require('./iss');
+const { printPassTimes } = require('./printPassTimes');
 
 // fetchMyIP((error, ip) => {
 //   if (error) {
@@ -27,19 +28,7 @@ const { nextISSTimesForMyLocation } = require('./iss');
 //   console.log(`It worked! Flyover times:`, data);
 // });
 
-//helper function to convert Unix timestamp into useable date:
-const printPassTimes = (passTimes) => {
-  for (const pass of passTimes) {
-    const date = new Date(pass.risetime * 1000);
-    const riseTime = date.toString();
-    const duration = pass.duration;
-
-    console.log(`Next pass at ${riseTime} for ${duration} seconds!`);
-  }
-};
-
 nextISSTimesForMyLocation((error, passTimes) => {
   if (error) return console.log("It didn't work!", error);
-
   printPassTimes(passTimes);
 });
